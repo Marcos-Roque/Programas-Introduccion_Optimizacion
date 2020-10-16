@@ -1,0 +1,23 @@
+#1) Ejemplo 4. Programa que determine la concavidad de la función f(x) 
+#(definir la primera y segunda derivada), mediante una gráfica comprobar la solución.
+#f(x)=x4 en x=0.
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f1(x):
+    return x*x*x*x
+def f1_1a(x):
+    return 4*x*x*x
+def f1_2a(x):
+    return 12*x*x
+#Si f''(x) < 0:la gráfica de f será cóncava hacia abajo.
+#Si f''(x) > 0:la gráfica de f será cóncava hacia arriba.
+#Si f''(x) = 0:en cualquier punto x=c en el dominio de f, no puede sacarse conclusión alguna sobre la concavidad en [c, f (c)].
+# comprobacion
+x = np.linspace(-2, 2, 15)
+for x_ in x:
+    print( x_, 'cóncava hacia arriba' if f1_2a(x_)>0 else 'cóncava hacia abajo' if f1_2a(x_)<0 else 'f(0)=0')
+y = f1(x)
+plt.title(r"Grafica de $f(x)=x^4$")
+plt.plot(x, y)
+plt.show()
